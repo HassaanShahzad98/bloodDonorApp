@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StyleSheet, View, Text, Image, ActivityIndicator, ScrollView } from 'react-native'
+import { StyleSheet, View, Text, Image, ActivityIndicator, ScrollView,Alert } from 'react-native'
 // import FbLogIn from '../../Components/ButtonLoginFacebook'
 // import { authWithFacebook, getUserSession } from '../../store/action/user';
 import { connect } from 'react-redux'
@@ -32,12 +32,30 @@ class Emergency extends Component {
                 </View>
                 <View style={{ flex: 1 }}>
 
-                    <TouchableOpacity activeOpacity={0.5} onPress={() => { this.props.navigation.navigate('Accident') }} style={{ marginTop: 20, justifyContent: 'center', paddingHorizontal: 20 }}>
+                    <TouchableOpacity activeOpacity={0.5}
+                        onPress={() => {
+                            Alert.alert(
+                                "Alert Title",
+                                "My Alert Msg",
+                                [
+                                  {
+                                    text: "Cancel",
+                                    onPress: () => console.log("Cancel Pressed"),
+                                    style: "cancel"
+                                  },
+                                  { text: "OK", onPress: () => console.log("OK Pressed") }
+                                ]
+                              );
+                        }}
+                        style={{ marginTop: 20, justifyContent: 'center', paddingHorizontal: 20 }}>
                         <View style={{ elevation: 3, shadowOpacity: 0.5, alignItems: 'center', height: 90, backgroundColor: '#ffffff', borderRadius: 15, flexDirection: 'row' }}>
                             <Image style={{ marginLeft: 20, height: 50, width: 50 }}
                                 source={require('../../../../images/heart-attack.png')}
                             />
                             <Text style={{ flex: 2, paddingLeft: 50, fontSize: 20, }}>Heart Attact</Text>
+                            <View style={{ height: 50, width: 50, marginRight: 30, borderRadius: 25, backgroundColor: 'blue', justifyContent: 'center', alignItems: 'center', alignContent: 'center' }}>
+                                <MaterialIcons name="send" style={{ height: 30, width: 30, textAlign: 'center', textAlignVertical: 'center' }} size={20} color="#fff" />
+                            </View>
                         </View>
                     </TouchableOpacity>
                     <View style={{ marginTop: 20, justifyContent: 'center', paddingHorizontal: 20 }}>
@@ -46,6 +64,9 @@ class Emergency extends Component {
                                 source={require('../../../../images/headache.png')}
                             />
                             <Text style={{ flex: 2, paddingLeft: 50, fontSize: 20, }}>headache</Text>
+                            <View style={{ height: 50, width: 50, marginRight: 30, borderRadius: 25, backgroundColor: 'blue', justifyContent: 'center', alignItems: 'center', alignContent: 'center' }}>
+                                <MaterialIcons name="send" style={{ height: 30, width: 30, textAlign: 'center', textAlignVertical: 'center' }} size={20} color="#fff" />
+                            </View>
                         </View>
                     </View>
                     <View style={{ marginTop: 20, justifyContent: 'center', paddingHorizontal: 20 }}>
@@ -54,6 +75,10 @@ class Emergency extends Component {
                                 source={require('../../../../images/heating.png')}
                             />
                             <Text style={{ flex: 2, paddingLeft: 50, fontSize: 20, }}>Heating</Text>
+                            <View style={{ height: 50, width: 50, marginRight: 30, borderRadius: 25, backgroundColor: 'blue', justifyContent: 'center', alignItems: 'center', alignContent: 'center' }}>
+                                <MaterialIcons name="send" style={{ height: 30, width: 30, textAlign: 'center', textAlignVertical: 'center' }} size={20} color="#fff" />
+                            </View>
+
                         </View>
                     </View>
                     <View style={{ marginTop: 20, justifyContent: 'center', paddingHorizontal: 20 }}>
@@ -62,6 +87,10 @@ class Emergency extends Component {
                                 source={require('../../../../images/accident.png')}
                             />
                             <Text style={{ flex: 2, paddingLeft: 50, fontSize: 20, }}>Accident</Text>
+                            <View style={{ height: 50, width: 50, marginRight: 30, borderRadius: 25, backgroundColor: 'blue', justifyContent: 'center', alignItems: 'center', alignContent: 'center' }}>
+                                <MaterialIcons name="send" style={{ height: 30, width: 30, textAlign: 'center', textAlignVertical: 'center' }} size={20} color="#fff" />
+                            </View>
+
                         </View>
                     </View>
                 </View>

@@ -20,6 +20,7 @@ import Accident from '../Screens/App/Accident';
 import AddFriend from '../Screens/App/AddFriend';
 import HelpLine from '../Screens/App/HelpLine';
 import FreeFood from '../Screens/App/FreeFood';
+import MyAccount from '../Screens/App/MyAccount';
 
 
 
@@ -108,6 +109,7 @@ const AppStack = createStackNavigator(
     AddFriend: { screen: AddFriend },
     HelpLine: { screen: HelpLine },
     FreeFood: { screen: FreeFood },
+    MyAccount: {screen : MyAccount},
 
 
     

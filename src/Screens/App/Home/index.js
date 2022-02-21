@@ -53,7 +53,9 @@ class Home extends Component {
                         />
                     </View>
                     <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', paddingHorizontal: 10 }}>
-                        <View style={{ borderWidth: 3, borderColor: '#060352', height: 50, width: 50, borderRadius: 50 }}></View>
+                        <View style={{ borderWidth: 1, borderColor: '#060352', height: 50, width: 50, borderRadius: 50 ,backgroundColor:'#fff' }}>
+                        <Entypo name="user" style={{ textAlign: 'center',marginTop:'auto',marginBottom:'auto'}} size={30} color="#233ad8" />
+                        </View>
                         <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#ffffff', paddingLeft: 10 }}>{username[0].toUpperCase() + username.slice(1)}</Text>
                     </View>
                     <View style={{ flex: 1, flexDirection: 'row', paddingHorizontal: 10 }}>
@@ -64,9 +66,8 @@ class Home extends Component {
                             />
                             <Text style={{ color: '#ffffff', paddingLeft: 5 }}>Add Friend</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity activeOpacity={0.8} style={{ elevation: 4, shadowOpacity: 0.5, alignItems: 'center', justifyContent: 'center', flexDirection: 'row', flex: 1, height: 45, backgroundColor: '#ffffff', marginLeft: 5, borderRadius: 25 }}>
+                        <TouchableOpacity  onPress={()=>{this.props.navigation.navigate('MyAccount')}} activeOpacity={0.8} style={{ elevation: 4, shadowOpacity: 0.5, alignItems: 'center', justifyContent: 'center', flexDirection: 'row', flex: 1, height: 45, backgroundColor: '#ffffff', marginLeft: 5, borderRadius: 25 }}>
                             <FontAwesome5
-                                onPress={() => { }}
                                 name="address-card" style={{ fontSize: 22, color: "#060352", paddingRight: 5 }}
                             />
                             <Text style={{ color: '#060352', paddingLeft: 5, fontWeight: 'bold', }}>My Account</Text>

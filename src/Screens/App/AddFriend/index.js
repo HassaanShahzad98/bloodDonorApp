@@ -25,6 +25,7 @@ class AddFriend extends Component {
             userData: '',
             friendData : [],
             addfriends : [],
+            friendRequests : [],
         }
     }
 
@@ -40,6 +41,9 @@ class AddFriend extends Component {
         })
          setTimeout(() => {
             this.fetchFriend()
+            this.fetchAddFriend()
+            this.fetchRequests()
+
          }, 1000);
     }
 
@@ -86,13 +90,13 @@ class AddFriend extends Component {
             });
     }
 
-    fetchaAdd() {
+    fetchAddFriend() {
         const { userData } = this.state
-        console.log('userDatafetchFriend' ,userData)
+        console.log('userDatafetchAddFriend' ,userData)
         var formData = new FormData()
         axios.get(
             `https://freeonlineskills.com/maddad/friends?id=${userData.id}`,
-            //`https://freeonlineskills.com/maddad/friends?id=1`, //for test
+            //`https://freeonlineskills.com/maddad/AddFriends`, //for test
             //formData,
             // {
             //     headers: {
@@ -129,10 +133,54 @@ class AddFriend extends Component {
             });
     }
 
+    fetchRequests ()  { //change variable accordigly
+        const { userData } = this.state
+        console.log('userDatafetchAddFriend' ,userData)
+        var formData = new FormData()
+        axios.get(
+            `https://freeonlineskills.com/maddad/friends?id=${userData.id}`,
+            //`https://freeonlineskills.com/maddad/friends?id=1`, //for test
+            //formData,
+            // {
+            //     headers: {
+            //         Accept: 'application/json',
+            //         'Content-Type': 'multipart/form-data',
+            //     } 
+            // }
+        )
+            .then((response) => {
+                //console.log('addFriendResponsse', response.data.collection)
+                if (response && response.data && response.data.status == 'success') {
+                    // AsyncStorage.setItem('userData', JSON.stringify(response.data.collection))
+                    this.setState({
+                         loader: false, //not applicable
+                         friendRequests : response.data.collection
+                        })
+                  
+                    //this.props.navigation.navigate('Login')
+                }
+                else {
+                    console.log(response);
+                    this.setState({ loader: false })
+                    Alert.alert('', response.data.msg)
+                }
+                //handle success
+            })
+            .catch(function (error) {
+                // handle error
+                Alert.alert('', 'Network error')
+
+            })
+            .then(function () {
+                // always executed
+            });
+    }
+
+
 
     render() {
         const { page } = this.state
-        const { friendData , addfriends } = this.state
+        const { friendData , addfriends , friendRequests } = this.state
         return (
             <View style={styles.container} >
                 <View style={{ height: 80, backgroundColor: '#233ad8' }}>
@@ -196,7 +244,7 @@ class AddFriend extends Component {
                                         </View>
                                     ))
                                     :
-                                    [1, 2, 3, 4].map(() => (
+                                    friendRequests.map(() => (
                                         <View style={{ paddingLeft: 20, justifyContent: 'center', elevation: 2, height: 120, borderRadius: 15, margin: 10, backgroundColor: '#ffffff' }}>
                                             <View style={{ flex: 1.3, justifyContent: 'center' }}>
                                                 <Text style={{ fontSize: 18, fontWeight: 'bold' }}>M Yasir</Text>
