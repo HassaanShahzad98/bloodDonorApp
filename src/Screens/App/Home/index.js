@@ -48,7 +48,7 @@ class Home extends Component {
                             name="notifications" style={{ fontSize: 25, color: "#ffffff", paddingRight: 15 }}
                         />
                         <Fontisto
-                            onPress={() => { }}
+                            onPress={() => { this.props.navigation.navigate('Emergencies') }}
                             name="messenger" style={{ fontSize: 22, color: "#ffffff" }}
                         />
                     </View>

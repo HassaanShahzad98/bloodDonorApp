@@ -70,6 +70,7 @@ class Login extends Component {
             )
                 .then(function (response) {
                     if (response && response.data && response.data.status == 'success') {
+                        console.log('response.data.collection at Login',response.data.collection)
                         AsyncStorage.setItem('userData', JSON.stringify(response.data.collection))
                         this.props.navigation.navigate('App')
 

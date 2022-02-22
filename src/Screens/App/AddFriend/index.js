@@ -95,8 +95,8 @@ class AddFriend extends Component {
         console.log('userDatafetchAddFriend' ,userData)
         var formData = new FormData()
         axios.get(
-            `https://freeonlineskills.com/maddad/friends?id=${userData.id}`,
-            //`https://freeonlineskills.com/maddad/AddFriends`, //for test
+            `https://freeonlineskills.com/maddad/AddFriends?user_id=${userData.id}`,
+            //`https://freeonlineskills.com/maddad/AddFriends?user_id=1`, //for test
             //formData,
             // {
             //     headers: {
@@ -135,11 +135,10 @@ class AddFriend extends Component {
 
     fetchRequests ()  { //change variable accordigly
         const { userData } = this.state
-        console.log('userDatafetchAddFriend' ,userData)
         var formData = new FormData()
         axios.get(
-            `https://freeonlineskills.com/maddad/friends?id=${userData.id}`,
-            //`https://freeonlineskills.com/maddad/friends?id=1`, //for test
+            `https://freeonlineskills.com/maddad/friend_request?user_id=${userData.id}`,
+            //`https://freeonlineskills.com/maddad/friend_request?user_id=1`, //for test
             //formData,
             // {
             //     headers: {

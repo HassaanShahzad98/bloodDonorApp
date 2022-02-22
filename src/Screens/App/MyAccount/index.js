@@ -67,24 +67,24 @@ class MyAccount extends Component {
 
                             [
                                 {
-                                    icon: 'magnifying-glass',
-                                    title: 'Search Settings'
+                                    detailType: 'Email :',
+                                    title: userData.email
                                 },
                                 {
-                                    icon: 'info-with-circle',
-                                    title: 'Personal Information'
+                                    detailType: 'Phone :',
+                                    title: userData.Phone
                                 },
                                 {
-                                    icon: 'users',
-                                    title: 'My Friends'
+                                    detailType: 'Blood Group :',
+                                    title: userData.blood_group
                                 },
                                 {
-                                    icon: 'add-user',
-                                    title: 'Account Settings'
+                                    detailType: 'Age :',
+                                    title: userData.age
                                 },
                                 {
-                                    icon: 'cog',
-                                    title: 'App Settings'
+                                    detailType: 'Gender :',
+                                    title: userData.gender
                                 }
                             ].map((item, index) => (
                                 <TouchableOpacity
@@ -106,7 +106,8 @@ class MyAccount extends Component {
                                                 shadowRadius: 5,
                                                 shadowOpacity: 1.0
                                             }}>
-                                        <Entypo name={item.icon} style={{ textAlign: 'center', width: 30, marginHorizontal: 20 }} size={20} color="#fff" />
+                                        {/* <Entypo name={item.icon} style={{ textAlign: 'center', width: 30, marginHorizontal: 20 }} size={20} color="#fff" /> */}
+                                        <Text style={{ fontSize: 18, fontWeight: '600', color: '#fff', marginHorizontal: 20  }}>{item.detailType}</Text>
                                         <Text style={{ fontSize: 18, fontWeight: '600', color: '#fff' }}>{item.title}</Text>
                                         <Text></Text>
                                         <Text></Text>
