@@ -96,7 +96,7 @@ class FirstAid extends Component {
                 </View>
 
                 {/* </ScrollView> */}
-                <Bottom />
+                <Bottom navigation={this.props.navigation} />
             </View>
         )
     }

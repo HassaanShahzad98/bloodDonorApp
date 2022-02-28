@@ -79,7 +79,7 @@ class BloodBank extends Component {
     render() {
         return (
             <View style={styles.container} >
-                <View style={{ height: 230, backgroundColor: '#e73630', borderBottomLeftRadius: 150, borderBottomRightRadius: 150 }}>
+                <View style={{ height: 230, backgroundColor: '#e73630', borderBottomLeftRadius: 20, borderBottomRightRadius: 20 }}>
                     <TouchableOpacity activeOpacity={0.7} onPress={() => { this.props.navigation.pop() }} style={{ paddingTop: 10, paddingLeft: 10, }}>
                         <Entypo name="back" style={{ textAlign: 'center', width: 30 }} size={20} color="#ffffff" />
                     </TouchableOpacity>
@@ -87,15 +87,15 @@ class BloodBank extends Component {
                         {/* <ImageBackground source={require('../../../../images/heart.png')} style={{ opacity: 0.2, height: 130, }}>
                             <View style={{ backgroundColor: 'blue', flex: 1 }}></View>
                         </ImageBackground> */}
-                        <View style={{ flex: 1 }}>
-                            <Text style={{ color: '#ffffff', fontSize: 20 }}>GIVE THE GIVE OF LIFE</Text>
+                        <View style={{ flex: 1, alignContent:'center' , alignItems:'center',justifyContent:'center' }}>
+                            <Text style={{ color: '#ffffff', fontSize: 20 }}>GIVE THE Gift OF LIFE</Text>
                             <View style={{ flexDirection: "row", marginTop: 5 }}>
                                 <Text style={{ color: '#ffffff', fontSize: 25, fontWeight: 'bold' }}>DONATE</Text>
                                 <Text style={{ color: '#e73630', backgroundColor: '#ffffff', paddingHorizontal: 10, marginLeft: 8, fontSize: 25, fontWeight: 'bold' }}>BLOOD</Text>
                             </View>
                         </View>
 
-                        <View style={{ flex: 1, flexDirection: 'row' }}>
+                        {/* <View style={{ flex: 1, flexDirection: 'row' }}>
                             <View style={{ flex: 1, alignItems: 'center', borderRightWidth: 2 }}>
                                 <Text style={{ color: '#ffffff', fontSize: 25 }}>150 +</Text>
                                 <Text style={{ color: '#ffffff', fontSize: 12 }}>New Blood Request</Text>
@@ -104,7 +104,7 @@ class BloodBank extends Component {
                                 <Text style={{ color: '#ffffff', fontSize: 25 }}>300 +</Text>
                                 <Text style={{ color: '#ffffff', fontSize: 12 }}>Blood Donors</Text>
                             </View>
-                        </View>
+                        </View> */}
                         <View style={{ flex: 0.5 }}>
 
                         </View>
@@ -157,7 +157,7 @@ class BloodBank extends Component {
                 </View>
 
                 {/* </ScrollView> */}
-                <Bottom />
+                <Bottom navigation={this.props.navigation} />
             </View>
         )
     }

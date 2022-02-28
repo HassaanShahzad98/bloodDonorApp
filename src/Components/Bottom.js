@@ -5,6 +5,7 @@ import {
     Text, TouchableOpacity, View,
 } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
 // AntDesign
@@ -32,27 +33,27 @@ const Bottom = ({ navigation }) => {
                 </TouchableOpacity>
             </View>
             <View style={styles.tabsView}>
-                <TouchableOpacity activeOpacity={0.5} style={styles.touchable} onPress={() => { buttonCall('Categories') }}>
-                    <AntDesign name="database" style={{ fontSize: 20, color: pageName == 'Categories' ? "#04243d" : "grey" }} />
-                    <Text style={{ fontWeight: 'bold', color: pageName == 'Categories' ? "#04243d" : "grey", fontSize: 12 }}>Location</Text>
+                <TouchableOpacity activeOpacity={0.5} style={styles.touchable} onPress={() => { buttonCall('Emergency') }}>
+                    <AntDesign name="notification" style={{ fontSize: 20, color: pageName == 'Categories' ? "#04243d" : "grey" }} />
+                    <Text style={{ fontWeight: 'bold', color: pageName == 'Categories' ? "#04243d" : "grey", fontSize: 12 }}>Emergency</Text>
                 </TouchableOpacity>
             </View>
             <View style={styles.tabsView}>
-                <TouchableOpacity activeOpacity={0.5} style={styles.touchable} onPress={() => { buttonCall('Cart') }}>
-                    <AntDesign name="shoppingcart" style={{ fontSize: 20, color: pageName == 'Cart' ? "#04243d" : "grey" }} />
-                    <Text style={{ fontWeight: 'bold', color: pageName == 'Cart' ? "#04243d" : "grey", fontSize: 12 }}>Camera</Text>
+                <TouchableOpacity activeOpacity={0.5} style={styles.touchable} onPress={() => { buttonCall('Emergencies') }}>
+                    <FontAwesome5 name="first-aid" style={{ fontSize: 20, color: pageName == 'Cart' ? "#04243d" : "grey" }} />
+                    <Text style={{ fontWeight: 'bold', color: pageName == 'Cart' ? "#04243d" : "grey", fontSize: 12 }}>Emergencies</Text>
                 </TouchableOpacity>
             </View>
             <View style={styles.tabsView}>
-                <TouchableOpacity activeOpacity={0.5} style={styles.touchable} onPress={() => { buttonCall('Search') }}>
+                <TouchableOpacity activeOpacity={0.5} style={styles.touchable} onPress={() => { buttonCall('HelpScreen') }}>
                     <AntDesign name="search1" style={{ fontSize: 20, color: pageName == 'Search' ? "#04243d" : "grey" }} />
                     <Text style={{ fontWeight: 'bold', color: pageName == 'Search' ? "#04243d" : "grey", fontSize: 12 }}>Help</Text>
                 </TouchableOpacity>
             </View>
             <View style={styles.tabsView}>
-                <TouchableOpacity activeOpacity={0.5} style={styles.touchable} onPress={() => { buttonCall('Account') }}>
+                <TouchableOpacity activeOpacity={0.5} style={styles.touchable} onPress={() => { buttonCall('MyAccount') }}>
                     <FontAwesome name="user-o" style={{ fontSize: 20, color: pageName == 'Account' ? "#04243d" : "grey" }} />
-                    <Text style={{ fontWeight: 'bold', color: pageName == 'Account' ? "#04243d" : "grey", fontSize: 12 }}>Setting</Text>
+                    <Text style={{ fontWeight: 'bold', color: pageName == 'Account' ? "#04243d" : "grey", fontSize: 12 }}>My Account</Text>
                 </TouchableOpacity>
             </View>
 

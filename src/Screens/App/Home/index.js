@@ -40,9 +40,9 @@ class Home extends Component {
         console.log(userData, 'asdasdasd')
         return (
             <View style={styles.container} >
-                <View style={{ flex: 1, backgroundColor: '#233ad8', overflow: 'hidden', borderBottomRightRadius: 30, borderBottomLeftRadius: 30 }}>
+                <View style={{ flex: 1, backgroundColor: '#233ad8', overflow: 'hidden', borderBottomRightRadius: 20, borderBottomLeftRadius: 20 }}>
                     <View style={{ flex: 0.8, borderBottomWidth: 1, borderColor: '#ffffff', flexDirection: 'row', alignItems: "center", paddingHorizontal: 10 }}>
-                        <Text style={{ flex: 1, fontSize: 18, fontWeight: 'bold', color: '#ffffff', }}>Maddad</Text>
+                        <Text style={{ flex: 1, fontSize: 25, fontWeight: 'bold', color: '#ffffff', }}>Maddad</Text>
                         <MaterialIcons
                             onPress={() => { }}
                             name="notifications" style={{ fontSize: 25, color: "#ffffff", paddingRight: 15 }}
@@ -124,7 +124,7 @@ class Home extends Component {
                 </View>
 
                 {/* </ScrollView> */}
-                <Bottom />
+                <Bottom navigation={this.props.navigation} />
             </View>
         )
     }

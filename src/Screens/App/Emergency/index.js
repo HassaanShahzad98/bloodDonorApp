@@ -108,23 +108,23 @@ class Emergency extends Component {
                             englishDecscription :'Robbery '
                         },
                         {
-                            icon : require('../../../../images/accident.png'),
+                            icon : require('../../../../images/bleeding.png'),
                             englishDecscription :'Bleeding'
                         },
                         {
-                            icon : require('../../../../images/accident.png'),
+                            icon : require('../../../../images/bre.png'),
                             englishDecscription :'Breathing'
                         },
                         {
-                            icon : require('../../../../images/accident.png'),
+                            icon : require('../../../../images/burn.png'),
                             englishDecscription :'Fire'
                         }
                     ].map((item,index)=>(
                     <TouchableOpacity activeOpacity={0.5}
                         onPress={() => {
                             Alert.alert(
-                                "Alert Title",
-                                "My Alert Msg",
+                                "",
+                                "Are you sure ...?",
                                 [
                                   {
                                     text: "Cancel",
@@ -152,7 +152,7 @@ class Emergency extends Component {
                     ))
 }
                 </ScrollView>
-                {/* <Bottom /> */}
+                {/* <Bottom navigation={this.props.navigation} /> */}
             </View>
         )
     }

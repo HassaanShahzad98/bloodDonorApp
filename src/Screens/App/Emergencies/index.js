@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react'
-import { StyleSheet, View, Text, Image, ActivityIndicator, ScrollView, Alert } from 'react-native'
+import { StyleSheet, View, Text, Image, ActivityIndicator, ScrollView, Alert,Linking } from 'react-native'
 // import FbLogIn from '../../Components/ButtonLoginFacebook'
 // import { authWithFacebook, getUserSession } from '../../store/action/user';
 import { connect } from 'react-redux'
@@ -97,23 +97,23 @@ class Emergencies extends Component {
                             <TouchableOpacity activeOpacity={0.5}
                                 onPress={() => {
                                     Alert.alert(
-                                        "Alert Title",
-                                        "My Alert Msg",
+                                        "",
+                                        "View Location ...?",
                                         [
                                             {
                                                 text: "Cancel",
                                                 onPress: () => console.log("Cancel Pressed"),
                                                 style: "cancel"
                                             },
-                                            { text: "OK", onPress: () => console.log("OK Pressed") }
+                                            { text: "OK", onPress: () => Linking.openURL(item.location) }
                                         ]
                                     );
                                 }}
-                                style={{ marginTop: 20, justifyContent: 'center', paddingHorizontal: 20 }}
+                                style={{ marginTop: 20, justifyContent: 'center', paddingHorizontal: 20}}
                             >
                                 <View style={{ elevation: 3, shadowOpacity: 0.5, alignItems: 'center', height: 90, backgroundColor: '#ffffff', borderRadius: 15, flexDirection: 'row' }}>
-                                    <FontAwesome name="user-circle" style={{ height: 50, width: 50, textAlign: 'center', textAlignVertical: 'center', marginLeft: 10 }} size={40} color="#000" />
-                                    <View>
+                                <Entypo name="location-pin" style={{ height: 50, width: 50, textAlign: 'center', textAlignVertical: 'center', marginLeft: 10 }} size={40} color="#000" />
+                                    <View style={{}}>
 
                                         <Text style={{ paddingLeft: 10, fontSize: 20, }}>{item.name}</Text>
                                         
@@ -214,7 +214,7 @@ class Emergencies extends Component {
                 </View>
 
                 {/* </ScrollView> */}
-                {/* <Bottom /> */}
+                {/* <Bottom navigation={this.props.navigation} /> */}
             </View>
         )
     }

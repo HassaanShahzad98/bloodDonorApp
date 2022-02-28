@@ -49,6 +49,7 @@ class Register extends Component {
             Alert.alert('', 'Password does not match')
         }
         else {
+
             this.setState({ loader: true })
             formData.append('name', fullName);
             formData.append('email', email);
@@ -69,7 +70,19 @@ class Register extends Component {
                     if (response && response.data && response.data.status == 'success') {
                         // AsyncStorage.setItem('userData', JSON.stringify(response.data.collection))
                         this.setState({ loader: false })
-                        this.props.navigation.navigate('Login')
+                        Alert.alert(
+                            "Please check you mail",
+                            "Your password has been sent to your mail",
+                            [
+                                // {
+                                //     text: "Cancel",
+                                //     onPress: () => console.log("Cancel Pressed"),
+                                //     style: "cancel"
+                                // },
+                                { text: "continue", onPress: () =>   this.props.navigation.navigate('Login') }
+                            ]
+                        );
+                      
                     }
                     else {
                         console.log(response);
@@ -143,7 +156,7 @@ class Register extends Component {
                             />
                         </View>
 
-                        <View style={{ borderRadius: 50, paddingHorizontal: 10, marginVertical: 5, backgroundColor: "#c1d7ef", flexDirection: 'row', alignItems: 'center' }}>
+                        {/* <View style={{ borderRadius: 50, paddingHorizontal: 10, marginVertical: 5, backgroundColor: "#c1d7ef", flexDirection: 'row', alignItems: 'center' }}>
                             <Entypo name="lock" style={{ textAlign: 'center', width: 30 }} size={20} color="#1713c0" />
                             <TextInput
                                 style={{ flex: 1 }}
@@ -169,10 +182,10 @@ class Register extends Component {
                                 <Entypo name={repeatPassShow ? 'eye-with-line' : "eye"} style={{ textAlign: 'center', width: 30 }} size={18} color="#1713c0" />
                             </TouchableOpacity>
                         </View>
-
+ */}
 
                         <View style={{ borderRadius: 50, paddingHorizontal: 10, marginVertical: 5, backgroundColor: "#c1d7ef", flexDirection: 'row', alignItems: 'center' }}>
-                            <FontAwesome name="phone" style={{ textAlign: 'center', width: 30 }} size={20} color="#1713c0" />
+                            <FontAwesome name="child" style={{ textAlign: 'center', width: 30 }} size={20} color="#1713c0" />
                             <TextInput
                                 style={{ width: '100%' }}
                                 onChangeText={(value) => { this.setState({ age: value }) }}
@@ -292,9 +305,9 @@ class Register extends Component {
                                             })
                                         }
                                     }
-                                    style={{ borderRadius: 50, width: '40%', marginVertical: 5, backgroundColor: "#c1d7ef", padding: 10, alignItems: 'center' }}
+                                    style={{ borderRadius: 50, width: '40%', marginVertical: 5, backgroundColor:gender=== 'Male' ?  "#1713c0" : "#c1d7ef", padding: 10, alignItems: 'center' }}
                                 >
-                                    <Text style={{ color: 'grey', fontWeight: '800' }}>Male</Text>
+                                    <Text style={{ color: gender=== 'Male' ? '#fff' : 'grey', fontWeight: '800' }}>Male</Text>
                                 </TouchableOpacity>
                                 <TouchableOpacity
                                     onPress={
@@ -304,9 +317,9 @@ class Register extends Component {
                                             })
                                         }
                                     }
-                                    style={{ borderRadius: 50, width: '40%', marginVertical: 5, backgroundColor: "#c1d7ef", padding: 10, alignItems: 'center' }}
+                                    style={{ borderRadius: 50, width: '40%', marginVertical: 5, backgroundColor:gender=== 'Female' ?  "#1713c0" : "#c1d7ef", padding: 10, alignItems: 'center' }}
                                 >
-                                    <Text style={{ color: 'grey', fontWeight: '800' }}>female</Text>
+                                    <Text style={{ color:gender=== 'Female' ? '#fff' : 'grey', fontWeight: '800' }}>female</Text>
                                 </TouchableOpacity>
                             </View>
 

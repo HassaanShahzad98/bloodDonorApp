@@ -59,7 +59,7 @@ class Donors extends Component {
 
                                         <Text style={{ paddingLeft: 10, fontSize: 20, }}>{item.name}</Text>
                                         <Text style={{ paddingLeft: 10, fontSize: 15, color: '#5eb2c0' }}>{item.phone}</Text>
-                                        <Text style={{ paddingLeft: 10, fontSize: 15, color: '#4b7a73'}}>{item.blood_group}</Text>
+                                        {/* <Text style={{ paddingLeft: 10, fontSize: 15, color: '#4b7a73'}}>{item.blood_group}</Text> */}
 
                                     </View>
                                 </View>
@@ -155,7 +155,7 @@ class Donors extends Component {
                 </View>
 
                 {/* </ScrollView> */}
-                {/* <Bottom /> */}
+                {/* <Bottom navigation={this.props.navigation} /> */}
             </View>
         )
     }

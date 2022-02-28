@@ -94,7 +94,7 @@ class MyAccount extends Component {
                                         key={index}
                                         style={
                                             {
-                                                marginHorizontal: 10, marginVertical: 10, flexDirection: 'row', width: window.width - 60,
+                                                marginVertical: 10, flexDirection: 'row', width: window.width - 60,
                                                 borderWidth: 1, borderTopColor: 'rgba(0,0,0,0.1)', borderLeftColor: 'rgba(0,0,0,0.1)', borderBottomColor: 'rgba(0,0,0,0.5)', borderRightColor: 'rgba(0,0,0,0.5)',
                                                 justifyContent: 'flex-start', alignItems: 'center', height: 60, borderRadius: 10, backgroundColor: '#1713c0',
                                                 elevation: 5,
