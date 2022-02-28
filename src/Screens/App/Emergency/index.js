@@ -93,31 +93,38 @@ class Emergency extends Component {
                     [
                         {
                             icon : require('../../../../images/heart-attack.png'),
-                            englishDecscription :'Heart Attack'
+                            englishDecscription :'Heart Attack',
+                            urduDecscription:'دل کا دورہ'
                         },
                         {
                             icon : require('../../../../images/heating.png'),
-                            englishDecscription :'Heat Stroke'
+                            englishDecscription :'Heat Stroke',
+                            urduDecscription:'ہیٹ اسٹروک'
                         },
                         {
                             icon : require('../../../../images/accident.png'),
-                            englishDecscription :'Accident'
+                            englishDecscription :'Accident',
+                            urduDecscription:'حادثہ'
                         },
                         {
                             icon : require('../../../../images/accident.png'),
-                            englishDecscription :'Robbery '
+                            englishDecscription :'Robbery ',
+                            urduDecscription:'ڈکیتی'
                         },
                         {
                             icon : require('../../../../images/bleeding.png'),
-                            englishDecscription :'Bleeding'
+                            englishDecscription :'Bleeding',
+                            urduDecscription:'خون بہنا'
                         },
                         {
                             icon : require('../../../../images/bre.png'),
-                            englishDecscription :'Breathing'
+                            englishDecscription :'Breathing',
+                            urduDecscription:'سانس میں مشکلات'
                         },
                         {
                             icon : require('../../../../images/burn.png'),
-                            englishDecscription :'Fire'
+                            englishDecscription :'Fire',
+                            urduDecscription:'آتشزدگی'
                         }
                     ].map((item,index)=>(
                     <TouchableOpacity activeOpacity={0.5}
@@ -133,17 +140,20 @@ class Emergency extends Component {
                                   },
                                   { text: "OK", onPress: () => {
                                       console.log("OK Pressed") 
-                                      this.getEmergencyApi(index)
+                                      this.getEmergencyApi(index+1)
                                     }}
                                 ]
                               );
                         }}
                         style={{ marginTop: 20, justifyContent: 'center', paddingHorizontal: 20 }}>
-                        <View style={{ elevation: 3, shadowOpacity: 0.5, alignItems: 'center', height: 90, backgroundColor: '#ffffff', borderRadius: 15, flexDirection: 'row' }}>
+                        <View style={{ elevation: 3, shadowOpacity: 0.5, alignItems: 'center', height: 90, backgroundColor: '#ffffff', borderRadius: 15, flexDirection: 'row',justifyContent:'space-between' }}>
                             <Image style={{ marginLeft: 20, height: 50, width: 50 }}
                                 source={item.icon}
                             />
-                            <Text style={{ flex: 2, paddingLeft: 50, fontSize: 20, }}>{item.englishDecscription}</Text>
+                            <View style={{alignItems:'center' }}>
+                            <Text style={{ flex: 2,  fontSize: 20,alignSelf:'flex-start' }}>{item.englishDecscription}</Text>
+                            <Text style={{ flex: 2,  fontSize: 20,alignSelf:'flex-end' }}>{item.urduDecscription}</Text>
+                            </View>
                             <View style={{ height: 50, width: 50, marginRight: 30, borderRadius: 25, backgroundColor: 'blue', justifyContent: 'center', alignItems: 'center', alignContent: 'center' }}>
                                 <MaterialIcons name="send" style={{ height: 30, width: 30, textAlign: 'center', textAlignVertical: 'center' }} size={20} color="#fff" />
                             </View>

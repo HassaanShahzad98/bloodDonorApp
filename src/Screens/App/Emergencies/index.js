@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react'
-import { StyleSheet, View, Text, Image, ActivityIndicator, ScrollView, Alert,Linking } from 'react-native'
+import { StyleSheet, View, Text, Image, ActivityIndicator, ScrollView, Alert, Linking } from 'react-native'
 // import FbLogIn from '../../Components/ButtonLoginFacebook'
 // import { authWithFacebook, getUserSession } from '../../store/action/user';
 import { connect } from 'react-redux'
@@ -27,17 +27,17 @@ class Emergencies extends Component {
     componentDidMount() {
         AsyncStorage.getItem('userData').then((value) => {
             var userData = JSON.parse(value)
-            this.setState({ userData : userData })
+            this.setState({ userData: userData })
         })
 
         setTimeout(() => {
             this.getEmergenciesApi()
-         }, 1000);
+        }, 1000);
     }
 
-    getEmergenciesApi(){
+    getEmergenciesApi() {
         const { userData } = this.state
-        console.log('getEmergenciesApi' ,userData)
+        console.log('getEmergenciesApi', userData)
         var formData = new FormData()
         axios.get(
             `https://freeonlineskills.com/maddad/getMessage?id=${userData.id}`,
@@ -54,12 +54,12 @@ class Emergencies extends Component {
                 //console.log('addFriendResponsse', response.data.collection)
                 if (response && response.data && response.data.status == 'success') {
                     // AsyncStorage.setItem('userData', JSON.stringify(response.data.collection))
-                    console.log('hassu',response.data.collection)
+                    console.log('hassu', response.data.collection)
                     this.setState({
-                         loader: false,
-                         emergencies : response.data.collection
-                        })
-                  
+                        loader: false,
+                        emergencies: response.data.collection
+                    })
+
                     //this.props.navigation.navigate('Login')
                 }
                 else {
@@ -72,7 +72,7 @@ class Emergencies extends Component {
             .catch(function (error) {
                 // handle error
                 Alert.alert('', 'Network error')
-    
+
             })
             .then(function () {
                 // always executed
@@ -80,7 +80,7 @@ class Emergencies extends Component {
     }
 
     render() {
-        const { userData , emergencies } = this.state
+        const { userData, emergencies } = this.state
         return (
             <View style={styles.container} >
                 <View style={{ height: 80, backgroundColor: '#233ad8' }}>
@@ -90,42 +90,46 @@ class Emergencies extends Component {
                     <Text style={{ color: '#ffffff', textAlign: 'center', fontSize: 18, fontWeight: 'bold', paddingBottom: 15 }}>Emergencies</Text>
                 </View>
                 <View style={{ flex: 1 }}>
+                    <ScrollView>
 
 
-                    {
-                        emergencies.map((item,index) => (
-                            <TouchableOpacity activeOpacity={0.5}
-                                onPress={() => {
-                                    Alert.alert(
-                                        "",
-                                        "View Location ...?",
-                                        [
-                                            {
-                                                text: "Cancel",
-                                                onPress: () => console.log("Cancel Pressed"),
-                                                style: "cancel"
-                                            },
-                                            { text: "OK", onPress: () => Linking.openURL(item.location) }
-                                        ]
-                                    );
-                                }}
-                                style={{ marginTop: 20, justifyContent: 'center', paddingHorizontal: 20}}
-                            >
-                                <View style={{ elevation: 3, shadowOpacity: 0.5, alignItems: 'center', height: 90, backgroundColor: '#ffffff', borderRadius: 15, flexDirection: 'row' }}>
-                                <Entypo name="location-pin" style={{ height: 50, width: 50, textAlign: 'center', textAlignVertical: 'center', marginLeft: 10 }} size={40} color="#000" />
-                                    <View style={{}}>
 
-                                        <Text style={{ paddingLeft: 10, fontSize: 20, }}>{item.name}</Text>
-                                        
-                                        <Text style={{ paddingLeft: 10, fontSize: 15, color: '#5eb2c0' }}>{item.description_english}</Text>
-                                        <Text style={{ paddingLeft: 10, fontSize: 15, color: '#4b7a73' ,left:0}}>{item.description_urdu}</Text>
-                                        <Text style={{ paddingLeft: 10, fontSize: 15, }}>{'Dated : ' + item.created_at}</Text>
+                        {
+                            emergencies.map((item, index) => (
+                                <TouchableOpacity activeOpacity={0.5}
+                                    onPress={() => {
+                                        Alert.alert(
+                                            "",
+                                            "View Location ...?",
+                                            [
+                                                {
+                                                    text: "Cancel",
+                                                    onPress: () => console.log("Cancel Pressed"),
+                                                    style: "cancel"
+                                                },
+                                                { text: "OK", onPress: () => Linking.openURL(item.location) }
+                                            ]
+                                        );
+                                    }}
+                                    style={{ marginTop: 20, justifyContent: 'center', paddingHorizontal: 20 }}
+                                >
+                                    <View style={{ elevation: 3, shadowOpacity: 0.5, alignItems: 'center', height: 90, backgroundColor: '#ffffff', borderRadius: 15, flexDirection: 'row' }}>
+                                        <Entypo name="location-pin" style={{ height: 50, width: 50, textAlign: 'center', textAlignVertical: 'center', marginLeft: 10 }} size={40} color="#000" />
+                                        <View style={{}}>
+
+                                            <Text style={{ paddingLeft: 10, fontSize: 20, }}>{item.name}</Text>
+
+                                            <Text style={{ paddingLeft: 10, fontSize: 15, color: '#5eb2c0' }}>{item.description_english}</Text>
+                                            <Text style={{ paddingLeft: 10, fontSize: 15, color: '#4b7a73', left: 0 }}>{item.description_urdu}</Text>
+                                            <Text style={{ paddingLeft: 10, fontSize: 15, }}>{'Dated : ' + item.created_at}</Text>
+                                        </View>
                                     </View>
-                                </View>
-                            </TouchableOpacity>
-                        ))
+                                </TouchableOpacity>
+                            ))
 
-                    }
+                        }
+
+                    </ScrollView>
 
                     {/* <TouchableOpacity activeOpacity={0.5}
                         onPress={() => {

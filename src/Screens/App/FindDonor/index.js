@@ -136,33 +136,33 @@ class FindDonor extends Component {
                         </TouchableOpacity>
                         <TouchableOpacity activeOpacity={0.5}
                             onPress={() => {
-                                this.findDonorApi('A_NEGATIVE')
+                                this.findDonorApi('A_NEG')
                             }}
-                            style={{ elevation: 3, shadowOpacity: 0.5, backgroundColor: bloodGroup === 'A_NEGATIVE' ? '#e73630' : '#ffffff', height: 80, width: 80, alignItems: 'center', justifyContent: 'center', borderRadius: 50 }}>
-                            <Text style={{ fontSize: 28, color: bloodGroup === 'A_NEGATIVE' ? '#ffffff' : '#e73630' }}>A-</Text>
+                            style={{ elevation: 3, shadowOpacity: 0.5, backgroundColor: bloodGroup === 'A_NEG' ? '#e73630' : '#ffffff', height: 80, width: 80, alignItems: 'center', justifyContent: 'center', borderRadius: 50 }}>
+                            <Text style={{ fontSize: 28, color: bloodGroup === 'A_NEG' ? '#ffffff' : '#e73630' }}>A-</Text>
                         </TouchableOpacity>
                         <TouchableOpacity activeOpacity={0.5}
                             onPress={() => {
-                                this.findDonorApi('O_NEGATIVE')
+                                this.findDonorApi('O_NEG')
                             }}
-                            style={{ elevation: 3, shadowOpacity: 0.5, backgroundColor: bloodGroup === 'O_NEGATIVE' ? '#e73630' : '#ffffff', height: 80, width: 80, alignItems: 'center', justifyContent: 'center', borderRadius: 50 }}>
-                            <Text style={{ fontSize: 28, color: bloodGroup === 'O_NEGATIVE' ? '#ffffff' : '#e73630' }}>O-</Text>
+                            style={{ elevation: 3, shadowOpacity: 0.5, backgroundColor: bloodGroup === 'O_NEG' ? '#e73630' : '#ffffff', height: 80, width: 80, alignItems: 'center', justifyContent: 'center', borderRadius: 50 }}>
+                            <Text style={{ fontSize: 28, color: bloodGroup === 'O_NEG' ? '#ffffff' : '#e73630' }}>O-</Text>
                         </TouchableOpacity>
                     </View>
                     <View style={{ display: 'flex', marginTop: 20, flexDirection: 'row', paddingHorizontal: 20, justifyContent: 'space-around' }}>
                     <TouchableOpacity activeOpacity={0.5}
                             onPress={() => {
-                                this.findDonorApi('B_NEGATIVE')
+                                this.findDonorApi('B_NEG')
                             }}
-                            style={{ elevation: 3, shadowOpacity: 0.5, backgroundColor: bloodGroup === 'B_NEGATIVE' ? '#e73630' : '#ffffff', height: 80, width: 80, alignItems: 'center', justifyContent: 'center', borderRadius: 50 }}>
-                            <Text style={{ fontSize: 28, color: bloodGroup === 'B_NEGATIVE' ? '#ffffff' : '#e73630' }}>B-</Text>
+                            style={{ elevation: 3, shadowOpacity: 0.5, backgroundColor: bloodGroup === 'B_NEG' ? '#e73630' : '#ffffff', height: 80, width: 80, alignItems: 'center', justifyContent: 'center', borderRadius: 50 }}>
+                            <Text style={{ fontSize: 28, color: bloodGroup === 'B_NEG' ? '#ffffff' : '#e73630' }}>B-</Text>
                         </TouchableOpacity>
                         <TouchableOpacity activeOpacity={0.5}
                             onPress={() => {
-                                this.findDonorApi('AB_NEGATIVE')
+                                this.findDonorApi('AB_NEG')
                             }}
-                            style={{ elevation: 3, shadowOpacity: 0.5, backgroundColor: bloodGroup === 'AB_NEGATIVE' ? '#e73630' : '#ffffff', height: 80, width: 80, alignItems: 'center', justifyContent: 'center', borderRadius: 50 }}>
-                            <Text style={{ fontSize: 28, color: bloodGroup === 'AB_NEGATIVE' ? '#ffffff' : '#e73630' }}>AB-</Text>
+                            style={{ elevation: 3, shadowOpacity: 0.5, backgroundColor: bloodGroup === 'AB_NEG' ? '#e73630' : '#ffffff', height: 80, width: 80, alignItems: 'center', justifyContent: 'center', borderRadius: 50 }}>
+                            <Text style={{ fontSize: 28, color: bloodGroup === 'AB_NEG' ? '#ffffff' : '#e73630' }}>AB-</Text>
                         </TouchableOpacity>
                     </View>
                 </View>

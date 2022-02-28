@@ -34,7 +34,7 @@ class HelpLine extends Component {
 
                     <TouchableOpacity activeOpacity={0.5} onPress={() => { Linking.openURL(`tel:${115}`) }} style={{ marginTop: 20, paddingHorizontal: 20 }}>
                         <View style={{ elevation: 3, shadowOpacity: 0.5, justifyContent: 'center', alignItems: "center", height: 90, backgroundColor: '#ffffff', borderRadius: 15, }}>
-                            <View style={{ flexDirection: 'row', justifyContent: 'space-between', width: '90%' }}>
+                            <View style={{ width: '90%' }}>
                                 <Text style={{ fontSize: 20, }}>Edhi Ambulance</Text>
                                 <Text style={{ fontSize: 20, }}>ایدھی ایمبولینس</Text>
                             </View>
@@ -43,7 +43,7 @@ class HelpLine extends Component {
                     </TouchableOpacity>
                     <TouchableOpacity activeOpacity={0.5} onPress={() => { Linking.openURL(`tel:${99215960}`) }} style={{ marginTop: 20, paddingHorizontal: 20 }}>
                         <View style={{ elevation: 3, shadowOpacity: 0.5, justifyContent: 'center', alignItems: "center", height: 90, backgroundColor: '#ffffff', borderRadius: 15, }}>
-                            <View style={{ flexDirection: 'row', justifyContent: 'space-between', width: '90%' }}>
+                            <View style={{ width: '90%' }}>
                                 <Text style={{ fontSize: 20, }}>Civil Hospital</Text>
                                 <Text style={{ fontSize: 20, }}>سول ہسپتال</Text>
                             </View>
@@ -52,7 +52,7 @@ class HelpLine extends Component {
                     </TouchableOpacity>
                     <TouchableOpacity activeOpacity={0.5} onPress={() => { Linking.openURL(`tel:${2413232}`) }} style={{ marginTop: 20, paddingHorizontal: 20 }}>
                         <View style={{ elevation: 3, shadowOpacity: 0.5, justifyContent: 'center', alignItems: "center", height: 90, backgroundColor: '#ffffff', borderRadius: 15, }}>
-                            <View style={{ flexDirection: 'row', justifyContent: 'space-between', width: '90%' }}>
+                            <View style={{ width: '90%' }}>
                                 <Text style={{ fontSize: 20, }}> Edhi Welfare Centre</Text>
                                 <Text style={{ fontSize: 20, }}>ایدھی ویلفیئر سینٹر</Text>
                             </View>

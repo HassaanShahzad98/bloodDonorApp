@@ -40,9 +40,9 @@ class Register extends Component {
 
 
     signUp() {
-        const { email, password, repeatPassword, phone, fullName, loader,bloodGroup , gender ,age } = this.state
+        const { email, password, repeatPassword, phone, fullName, loader, bloodGroup, gender, age } = this.state
         var formData = new FormData()
-        if (email == '' || password == '' || phone == '' || fullName == '' || bloodGroup=='Select Blood Group' || gender== '' , age=='') {
+        if (email == '' || password == '' || phone == '' || fullName == '' || bloodGroup == 'Select Blood Group' || gender == '', age == '') {
             Alert.alert('', 'All fields are required')
         }
         else if (password !== repeatPassword) {
@@ -79,10 +79,10 @@ class Register extends Component {
                                 //     onPress: () => console.log("Cancel Pressed"),
                                 //     style: "cancel"
                                 // },
-                                { text: "continue", onPress: () =>   this.props.navigation.navigate('Login') }
+                                { text: "continue", onPress: () => this.props.navigation.navigate('Login') }
                             ]
                         );
-                      
+
                     }
                     else {
                         console.log(response);
@@ -261,6 +261,17 @@ class Register extends Component {
                                         onPress={() => {
                                             this.setState({
                                                 showDropdown: false,
+                                                bloodGroup: 'ab_neg'
+                                            })
+                                        }}
+                                    >
+                                        <Text>AB-</Text>
+                                    </TouchableOpacity>
+                                    
+                                    <TouchableOpacity
+                                        onPress={() => {
+                                            this.setState({
+                                                showDropdown: false,
                                                 bloodGroup: 'a_neg'
                                             })
                                         }}
@@ -283,11 +294,11 @@ class Register extends Component {
                                         onPress={() => {
                                             this.setState({
                                                 showDropdown: false,
-                                                bloodGroup: 'a_neg'
+                                                bloodGroup: 'o_neg'
                                             })
                                         }}
                                     >
-                                        <Text>A-</Text>
+                                        <Text>O-</Text>
                                     </TouchableOpacity>
 
                                 </View>
@@ -305,9 +316,9 @@ class Register extends Component {
                                             })
                                         }
                                     }
-                                    style={{ borderRadius: 50, width: '40%', marginVertical: 5, backgroundColor:gender=== 'Male' ?  "#1713c0" : "#c1d7ef", padding: 10, alignItems: 'center' }}
+                                    style={{ borderRadius: 50, width: '40%', marginVertical: 5, backgroundColor: gender === 'Male' ? "#1713c0" : "#c1d7ef", padding: 10, alignItems: 'center' }}
                                 >
-                                    <Text style={{ color: gender=== 'Male' ? '#fff' : 'grey', fontWeight: '800' }}>Male</Text>
+                                    <Text style={{ color: gender === 'Male' ? '#fff' : 'grey', fontWeight: '800' }}>Male</Text>
                                 </TouchableOpacity>
                                 <TouchableOpacity
                                     onPress={
@@ -317,9 +328,9 @@ class Register extends Component {
                                             })
                                         }
                                     }
-                                    style={{ borderRadius: 50, width: '40%', marginVertical: 5, backgroundColor:gender=== 'Female' ?  "#1713c0" : "#c1d7ef", padding: 10, alignItems: 'center' }}
+                                    style={{ borderRadius: 50, width: '40%', marginVertical: 5, backgroundColor: gender === 'Female' ? "#1713c0" : "#c1d7ef", padding: 10, alignItems: 'center' }}
                                 >
-                                    <Text style={{ color:gender=== 'Female' ? '#fff' : 'grey', fontWeight: '800' }}>female</Text>
+                                    <Text style={{ color: gender === 'Female' ? '#fff' : 'grey', fontWeight: '800' }}>female</Text>
                                 </TouchableOpacity>
                             </View>
 

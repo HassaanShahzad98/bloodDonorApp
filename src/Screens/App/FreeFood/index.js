@@ -35,45 +35,53 @@ class FreeFood extends Component {
                         <TouchableOpacity activeOpacity={0.5} onPress={() => { Linking.openURL('https://maps.app.goo.gl/Uum9aYF1iAFVTQUXA') }} style={{ marginTop: 20, paddingHorizontal: 20 }}>
                             <View style={{ elevation: 3, shadowOpacity: 0.5, justifyContent: 'center', alignItems: "center", height: 90, backgroundColor: '#ffffff', borderRadius: 15, }}>
                                 <Text style={{ fontSize: 20, }}>Punjab Chowrangi</Text>
+                                <Text style={{ fontSize: 20, }}>پنجاب چورنگی</Text>
                             </View>
                         </TouchableOpacity>
 
                         <TouchableOpacity activeOpacity={0.5} onPress={() => { Linking.openURL('https://maps.app.goo.gl/fLKSBDWR9b1pTBFf8') }} style={{ marginTop: 20, paddingHorizontal: 20 }}>
                             <View style={{ elevation: 3, shadowOpacity: 0.5, justifyContent: 'center', alignItems: "center", height: 90, backgroundColor: '#ffffff', borderRadius: 15, }}>
                                 <Text style={{ fontSize: 20, }}>Numaish</Text>
+                                <Text style={{ fontSize: 20, }}>نمائش</Text>
                             </View>
                         </TouchableOpacity>
 
                         <TouchableOpacity activeOpacity={0.5} onPress={() => { Linking.openURL('https://maps.app.goo.gl/KUSFKGPEpLXvhG2t7') }} style={{ marginTop: 20, paddingHorizontal: 20 }}>
                             <View style={{ elevation: 3, shadowOpacity: 0.5, justifyContent: 'center', alignItems: "center", height: 90, backgroundColor: '#ffffff', borderRadius: 15, }}>
                                 <Text style={{ fontSize: 20, }}>Gulshan Maskan</Text>
+                                <Text style={{ fontSize: 20, }}>گلشن مسکن</Text>
                             </View>
                         </TouchableOpacity>
 
                         <TouchableOpacity activeOpacity={0.5} onPress={() => { Linking.openURL('https://maps.app.goo.gl/TjD4wY7vH9T5FiBz8') }} style={{ marginTop: 20, paddingHorizontal: 20 }}>
                             <View style={{ elevation: 3, shadowOpacity: 0.5, justifyContent: 'center', alignItems: "center", height: 90, backgroundColor: '#ffffff', borderRadius: 15, }}>
                                 <Text style={{ fontSize: 20, }}>Civil</Text>
+                                <Text style={{ fontSize: 20, }}>سول</Text>
                             </View>
                         </TouchableOpacity>
                         <TouchableOpacity activeOpacity={0.5} onPress={() => { Linking.openURL('https://maps.app.goo.gl/dkLVvEwtFLNr3mdE8') }} style={{ marginTop: 20, paddingHorizontal: 20 }}>
                             <View style={{ elevation: 3, shadowOpacity: 0.5, justifyContent: 'center', alignItems: "center", height: 90, backgroundColor: '#ffffff', borderRadius: 15, }}>
                                 <Text style={{ fontSize: 20, }}>Saddar</Text>
+                                <Text style={{ fontSize: 20, }}>صدر</Text>
                             </View>
                         </TouchableOpacity>
 
                         <TouchableOpacity activeOpacity={0.5} onPress={() => { Linking.openURL('https://maps.app.goo.gl/cuL8qdPejriqkcbT6') }} style={{ marginTop: 20, paddingHorizontal: 20 }}>
                             <View style={{ elevation: 3, shadowOpacity: 0.5, justifyContent: 'center', alignItems: "center", height: 90, backgroundColor: '#ffffff', borderRadius: 15, }}>
                                 <Text style={{ fontSize: 20, }}>Paposh Nagar </Text>
+                                <Text style={{ fontSize: 20, }}>پاپوش نگر</Text>
                             </View>
                         </TouchableOpacity>
                         <TouchableOpacity activeOpacity={0.5} onPress={() => { Linking.openURL('https://maps.app.goo.gl/v6wTh6mxNV9ZYHbY6') }} style={{ marginTop: 20, paddingHorizontal: 20 }}>
                             <View style={{ elevation: 3, shadowOpacity: 0.5, justifyContent: 'center', alignItems: "center", height: 90, backgroundColor: '#ffffff', borderRadius: 15, }}>
                                 <Text style={{ fontSize: 20, }}>Bahadurabad</Text>
+                                <Text style={{ fontSize: 20, }}>بہادرآباد</Text>
                             </View>
                         </TouchableOpacity>
                         <TouchableOpacity activeOpacity={0.5} onPress={() => { Linking.openURL('https://maps.app.goo.gl/VABVzCiA4BXK5bjd6') }} style={{ marginTop: 20, paddingHorizontal: 20 }}>
                             <View style={{ elevation: 3, shadowOpacity: 0.5, justifyContent: 'center', alignItems: "center", height: 90, backgroundColor: '#ffffff', borderRadius: 15, }}>
                                 <Text style={{ fontSize: 20, }}>Korangi 4</Text>
+                                <Text style={{ fontSize: 20, }}>کورنگی</Text>
                             </View>
                         </TouchableOpacity>
                     </ScrollView>
