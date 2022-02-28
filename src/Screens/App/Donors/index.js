@@ -16,99 +16,41 @@ const axios = require('axios');
 
 
 
-class Emergencies extends Component {
+class Donors extends Component {
     constructor() {
         super()
         this.state = {
             userData: {},
-            emergencies: [],
+            Donors: [],
         }
     }
     componentDidMount() {
         AsyncStorage.getItem('userData').then((value) => {
             var userData = JSON.parse(value)
             this.setState({ userData : userData })
+            console.log('chk',this.props.navigation.getParam('response'))
+            this.setState({ Donors : this.props.navigation.getParam('response') })
         })
-
-        setTimeout(() => {
-            this.getEmergenciesApi()
-         }, 1000);
-    }
-
-    getEmergenciesApi(){
-        const { userData } = this.state
-        console.log('getEmergenciesApi' ,userData)
-        var formData = new FormData()
-        axios.get(
-            `https://freeonlineskills.com/maddad/getMessage?id=${userData.id}`,
-            //`https://freeonlineskills.com/maddad/getMessage?id=2`, //for test
-            //formData,
-            // {
-            //     headers: {
-            //         Accept: 'application/json',
-            //         'Content-Type': 'multipart/form-data',
-            //     } 
-            // }
-        )
-            .then((response) => {
-                //console.log('addFriendResponsse', response.data.collection)
-                if (response && response.data && response.data.status == 'success') {
-                    // AsyncStorage.setItem('userData', JSON.stringify(response.data.collection))
-                    console.log('hassu',response.data.collection)
-                    this.setState({
-                         loader: false,
-                         emergencies : response.data.collection
-                        })
-                  
-                    //this.props.navigation.navigate('Login')
-                }
-                else {
-                    console.log(response);
-                    this.setState({ loader: false })
-                    Alert.alert('', response.data.msg)
-                }
-                //handle success
-            })
-            .catch(function (error) {
-                // handle error
-                Alert.alert('', 'Network error')
-    
-            })
-            .then(function () {
-                // always executed
-            });
     }
 
     render() {
-        const { userData , emergencies } = this.state
+        const { userData , Donors } = this.state
+        console.log(Donors)
         return (
             <View style={styles.container} >
                 <View style={{ height: 80, backgroundColor: '#233ad8' }}>
                     <TouchableOpacity activeOpacity={0.7} onPress={() => { this.props.navigation.pop() }} style={{ flex: 1, paddingLeft: 10, justifyContent: 'center' }}>
                         <Entypo name="back" style={{ textAlign: 'center', width: 30 }} size={20} color="#ffffff" />
                     </TouchableOpacity>
-                    <Text style={{ color: '#ffffff', textAlign: 'center', fontSize: 18, fontWeight: 'bold', paddingBottom: 15 }}>Emergencies</Text>
+                    <Text style={{ color: '#ffffff', textAlign: 'center', fontSize: 18, fontWeight: 'bold', paddingBottom: 15 }}>Donors</Text>
                 </View>
                 <View style={{ flex: 1 }}>
 
 
                     {
-                        emergencies.map((item,index) => (
+                        Donors.map((item,index) => (
                             <TouchableOpacity activeOpacity={0.5}
-                                onPress={() => {
-                                    Alert.alert(
-                                        "Alert Title",
-                                        "My Alert Msg",
-                                        [
-                                            {
-                                                text: "Cancel",
-                                                onPress: () => console.log("Cancel Pressed"),
-                                                style: "cancel"
-                                            },
-                                            { text: "OK", onPress: () => console.log("OK Pressed") }
-                                        ]
-                                    );
-                                }}
+                                onPress={() => {}}
                                 style={{ marginTop: 20, justifyContent: 'center', paddingHorizontal: 20 }}
                             >
                                 <View style={{ elevation: 3, shadowOpacity: 0.5, alignItems: 'center', height: 90, backgroundColor: '#ffffff', borderRadius: 15, flexDirection: 'row' }}>
@@ -116,10 +58,9 @@ class Emergencies extends Component {
                                     <View>
 
                                         <Text style={{ paddingLeft: 10, fontSize: 20, }}>{item.name}</Text>
-                                        
-                                        <Text style={{ paddingLeft: 10, fontSize: 15, color: '#5eb2c0' }}>{item.description_english}</Text>
-                                        <Text style={{ paddingLeft: 10, fontSize: 15, color: '#4b7a73' ,left:0}}>{item.description_urdu}</Text>
-                                        <Text style={{ paddingLeft: 10, fontSize: 15, }}>{'Dated : ' + item.created_at}</Text>
+                                        <Text style={{ paddingLeft: 10, fontSize: 15, color: '#5eb2c0' }}>{item.phone}</Text>
+                                        <Text style={{ paddingLeft: 10, fontSize: 15, color: '#4b7a73'}}>{item.blood_group}</Text>
+
                                     </View>
                                 </View>
                             </TouchableOpacity>
@@ -241,7 +182,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Emergencies);
+export default connect(mapStateToProps, mapDispatchToProps)(Donors);
 
 
 const styles = StyleSheet.create({

@@ -8,15 +8,16 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
 // AntDesign
-import { Drawer, Icon } from 'native-base';
+import { Drawer, Icon } from 'native-base'; 
 // import SideBar from '../Sidebar/index';
 
-const Bottom = ({ ...props }) => {
+const Bottom = ({ navigation }) => {
 
-    const [pageName, setpageName] = useState(props.pageName ? props.pageName : '')
-    console.log(props.pageName, 'props_______pageName')
+    const [pageName, setpageName] = useState(navigation?.state.routeName? navigation?.state.routeName :'')
+    console.log(navigation?.state.routeName, 'props_______pageName')
     const buttonCall = (pageName) => {
-        setpageName(pageName)
+        // setpageName(pageName)
+        navigation.navigate(pageName)
         // console.log(props.navigation, 'props_________navigation')
         // props.navigation.navigate(pageName)
     }

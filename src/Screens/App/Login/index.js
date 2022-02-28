@@ -70,6 +70,7 @@ class Login extends Component {
                 }
             )
                 .then((response) => {
+                    console.log('response.data.collection=>atLogin=>',response.data.collection)
                     if (response && response.data && response.data.status == 'success') {
                         AsyncStorage.setItem('userData', JSON.stringify(response.data.collection))
                         this.setState({ loader: false })

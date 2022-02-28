@@ -202,7 +202,7 @@ class AddFriend extends Component {
 
                     </View>
 
-                    <View style={{ height: 55, marginTop: 10, }}>
+                    {/* <View style={{ height: 55, marginTop: 10, }}>
                         <TextInput
                             style={{
                                 margin: 5, paddingLeft: 20, borderRadius: 25, backgroundColor: '#ffffff',
@@ -215,7 +215,7 @@ class AddFriend extends Component {
                             numberOfLines={2}
                             placeholder='Search friends'
                         />
-                    </View>
+                    </View> */}
 
                     <ScrollView style={{ marginTop: 2 }}>
                         {

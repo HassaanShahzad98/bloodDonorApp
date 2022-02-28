@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StyleSheet, View, Text, Image, ImageBackground, ActivityIndicator, ScrollView } from 'react-native'
+import { StyleSheet, View, Text, Image, ImageBackground, ActivityIndicator, ScrollView,TouchableOpacity,Alert } from 'react-native'
 // import FbLogIn from '../../Components/ButtonLoginFacebook'
 // import { authWithFacebook, getUserSession } from '../../store/action/user';
 import { connect } from 'react-redux'
@@ -8,12 +8,73 @@ import Fontisto from 'react-native-vector-icons/Fontisto';
 import Entypo from 'react-native-vector-icons/Entypo';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import { TouchableOpacity } from 'react-native';
-import Bottom from '../../../Components/Bottom'
+import Bottom from '../../../Components/Bottom';
+import AsyncStorage from '@react-native-community/async-storage';
+const axios = require('axios');
 
 
 
 class FindDonor extends Component {
+
+    constructor() {
+        super()
+        this.state = {
+            userData: {},
+            bloodGroup : ''
+        }
+    }
+    componentDidMount() {
+        AsyncStorage.getItem('userData').then((value) => {
+            var userData = JSON.parse(value)
+            this.setState({ userData : userData })
+        })
+    }
+
+    findDonorApi(bloodGroup){
+    const { userData } = this.state
+    console.log('userDatafetchAddFriend' ,userData)
+    var formData = new FormData()
+    axios.get(
+        `https://freeonlineskills.com/maddad/findDonor?group=${bloodGroup}&user_id=${userData.id}`,
+        //`https://freeonlineskills.com/maddad/findDonor?group=O_PLUS&user_id=1`, //for test
+        //formData,
+        // {
+        //     headers: {
+        //         Accept: 'application/json',
+        //         'Content-Type': 'multipart/form-data',
+        //     } 
+        // }
+    )
+        .then((response) => {
+            //console.log('addFriendResponsse', response.data.collection)
+            if (response && response.data && response.data.status == 'success') {
+                // AsyncStorage.setItem('userData', JSON.stringify(response.data.collection))
+                // this.setState({
+                //      loader: false,
+                //      addfriends : response.data.collection
+                //     })
+              
+                this.props.navigation.navigate('Donors'
+                , {
+                    response : response.data.collection
+                  });
+            }
+            else {
+                console.log(response);
+                this.setState({ loader: false })
+                Alert.alert('', response.data.msg)
+            }
+            //handle success
+        })
+        .catch(function (error) {
+            // handle error
+            Alert.alert('', 'Network error')
+
+        })
+        .then(function () {
+            // always executed
+        });
+}
     //   signin = () => {
     //     this.props.authWithFacebook(this.props.navigation);
     //   }
@@ -22,6 +83,8 @@ class FindDonor extends Component {
     //   }
 
     render() {
+        const { userData , bloodGroup} = this.state
+        console.log('bloodGroupathassu' , bloodGroup)
         return (
             <View style={styles.container} >
                 <View style={{ height: 170, backgroundColor: '#e73630', borderBottomLeftRadius: 150, borderBottomRightRadius: 150 }}>
@@ -39,32 +102,51 @@ class FindDonor extends Component {
                 <View style={{ flex: 1, marginTop: 10, paddingHorizontal: 25 }}>
                     <Text style={{ color: '#e73630', fontSize: 23, textAlign: 'center' }}>Please select the blood group that you want !!</Text>
                     <View style={{ display: 'flex', marginTop: 20, flexDirection: 'row', justifyContent: 'space-around' }}>
-                        <TouchableOpacity activeOpacity={0.5} style={{ elevation: 3, shadowOpacity: 0.5, backgroundColor: '#e73630', height: 80, width: 80, alignItems: 'center', justifyContent: 'center', borderRadius: 50 }}>
-                            <Text style={{ fontSize: 28, color: '#ffffff' }}>A+</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity activeOpacity={0.5} style={{ elevation: 3, shadowOpacity: 0.5, backgroundColor: '#ffffff', height: 80, width: 80, alignItems: 'center', justifyContent: 'center', borderRadius: 50 }}>
+                        <TouchableOpacity activeOpacity={0.5} 
+                        onPress={() => { 
+                           this.findDonorApi('A_PLUS')
+                        }}
+                        style={{ elevation: 3, shadowOpacity: 0.5, backgroundColor:bloodGroup==='A_PLUS'? '#e73630':'#ffffff', height: 80, width: 80, alignItems: 'center', justifyContent: 'center', borderRadius: 50 }}>
+                            <Text style={{ fontSize: 28, color:bloodGroup==='A_PLUS'? '#ffffff' : '#e73630' }}>A+</Text>
+                        </TouchableOpacity> 
+
+                        <TouchableOpacity activeOpacity={0.5} 
+                        onPress={()=>{this.setState({bloodGroup:'O_PLUS'})}}
+                        style={{ elevation: 3, shadowOpacity: 0.5, backgroundColor: '#ffffff', height: 80, width: 80, alignItems: 'center', justifyContent: 'center', borderRadius: 50 }}>
                             <Text style={{ fontSize: 28, color: '#e73630' }}>O+</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity activeOpacity={0.5} style={{ elevation: 3, shadowOpacity: 0.5, backgroundColor: '#ffffff', height: 80, width: 80, alignItems: 'center', justifyContent: 'center', borderRadius: 50 }}>
+                        <TouchableOpacity activeOpacity={0.5} 
+                        onPress={()=>{this.setState({bloodGroup:'B_PLUS'})}}
+                        style={{ elevation: 3, shadowOpacity: 0.5, backgroundColor: '#ffffff', height: 80, width: 80, alignItems: 'center', justifyContent: 'center', borderRadius: 50 }}>
                             <Text style={{ fontSize: 28, color: '#e73630' }}>B+</Text>
                         </TouchableOpacity>
                     </View>
                     <View style={{ display: 'flex', marginTop: 20, flexDirection: 'row', justifyContent: 'space-around' }}>
-                        <TouchableOpacity activeOpacity={0.5} style={{ elevation: 3, shadowOpacity: 0.5, backgroundColor: '#ffffff', height: 80, width: 80, alignItems: 'center', justifyContent: 'center', borderRadius: 50 }}>
+                        <TouchableOpacity activeOpacity={0.5} 
+                        onPress={()=>{this.setState({bloodGroup:'AB_PLUS'})}}
+                        style={{ elevation: 3, shadowOpacity: 0.5, backgroundColor: '#ffffff', height: 80, width: 80, alignItems: 'center', justifyContent: 'center', borderRadius: 50 }}>
                             <Text style={{ fontSize: 28, color: '#e73630' }}>AB+</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity activeOpacity={0.5} style={{ elevation: 3, shadowOpacity: 0.5, backgroundColor: '#ffffff', height: 80, width: 80, alignItems: 'center', justifyContent: 'center', borderRadius: 50 }}>
+                        <TouchableOpacity activeOpacity={0.5} 
+                        onPress={()=>{this.setState({bloodGroup:'A_NEGATIVE'})}}
+                        style={{ elevation: 3, shadowOpacity: 0.5, backgroundColor: '#ffffff', height: 80, width: 80, alignItems: 'center', justifyContent: 'center', borderRadius: 50 }}>
                             <Text style={{ fontSize: 28, color: '#e73630' }}>A-</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity activeOpacity={0.5} style={{ elevation: 3, shadowOpacity: 0.5, backgroundColor: '#ffffff', height: 80, width: 80, alignItems: 'center', justifyContent: 'center', borderRadius: 50 }}>
+                        <TouchableOpacity activeOpacity={0.5} 
+                        onPress={()=>{this.setState({bloodGroup:'O_NEGATIVE'})}}
+                        style={{ elevation: 3, shadowOpacity: 0.5, backgroundColor: '#ffffff', height: 80, width: 80, alignItems: 'center', justifyContent: 'center', borderRadius: 50 }}>
                             <Text style={{ fontSize: 28, color: '#e73630' }}>O-</Text>
                         </TouchableOpacity>
                     </View>
                     <View style={{ display: 'flex', marginTop: 20, flexDirection: 'row', paddingHorizontal: 20, justifyContent: 'space-around' }}>
-                        <TouchableOpacity activeOpacity={0.5} style={{ elevation: 3, shadowOpacity: 0.5, backgroundColor: '#ffffff', height: 80, width: 80, alignItems: 'center', justifyContent: 'center', borderRadius: 50 }}>
+                        <TouchableOpacity activeOpacity={0.5} 
+                        onPress={()=>{this.setState({bloodGroup:'B_NEGATIVE'})}}
+                        style={{ elevation: 3, shadowOpacity: 0.5, backgroundColor: '#ffffff', height: 80, width: 80, alignItems: 'center', justifyContent: 'center', borderRadius: 50 }}>
                             <Text style={{ fontSize: 28, color: '#e73630' }}>B-</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity activeOpacity={0.5} style={{ elevation: 3, shadowOpacity: 0.5, backgroundColor: '#ffffff', height: 80, width: 80, alignItems: 'center', justifyContent: 'center', borderRadius: 50 }}>
+                        <TouchableOpacity activeOpacity={0.5} 
+                        onPress={()=>{this.setState({bloodGroup:'AB_NEGATIVE'})}}
+                        style={{ elevation: 3, shadowOpacity: 0.5, backgroundColor: '#ffffff', height: 80, width: 80, alignItems: 'center', justifyContent: 'center', borderRadius: 50 }}>
                             <Text style={{ fontSize: 28, color: '#e73630' }}>AB-</Text>
                         </TouchableOpacity>
                     </View>

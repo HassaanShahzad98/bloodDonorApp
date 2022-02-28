@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StyleSheet, View, Text, Image, ImageBackground, ActivityIndicator, ScrollView } from 'react-native'
+import { StyleSheet, View, Text, Image, ImageBackground, ActivityIndicator, ScrollView, Alert } from 'react-native'
 // import FbLogIn from '../../Components/ButtonLoginFacebook'
 // import { authWithFacebook, getUserSession } from '../../store/action/user';
 import { connect } from 'react-redux'
@@ -10,15 +10,70 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { TouchableOpacity } from 'react-native';
 import Bottom from '../../../Components/Bottom'
+import AsyncStorage from '@react-native-community/async-storage';
+const axios = require('axios');
 
 
 
 class BloodBank extends Component {
-    //   signin = () => {
-    //     this.props.authWithFacebook(this.props.navigation);
-    //   }
-    //   componentDidMount() {
-    //     this.props.getUserSession(this.props.navigation);
+    constructor() {
+        super()
+        this.state = {
+            userData: {},
+            emergencies: [],
+        }
+    }
+    componentDidMount() {
+        AsyncStorage.getItem('userData').then((value) => {
+            var userData = JSON.parse(value)
+            this.setState({ userData : userData })
+        })
+    }
+
+      becomeDonorApi(){
+        const { userData } = this.state
+        console.log('  becomeDonorApi' ,userData)
+        var formData = new FormData()
+        axios.post(
+            `https://freeonlineskills.com/maddad/becomeDonor?id=${userData.id}`,
+            //`https://freeonlineskills.com/maddad/becomeDonor?id=21`, //for test
+            //formData,
+            // {
+            //     headers: {
+            //         Accept: 'application/json',
+            //         'Content-Type': 'multipart/form-data',
+            //     } 
+            // }
+        )
+            .then((response) => {
+                //console.log('addFriendResponsse', response.data.collection)
+                if (response && response.data && response.data.status == 'success') {
+                    // AsyncStorage.setItem('userData', JSON.stringify(response.data.collection))
+                    console.log('hassu',response.data.collection)
+                    this.setState({
+                         loader: false,
+                         emergencies : response.data.collection
+                        })
+                  
+                    //this.props.navigation.navigate('Login')
+                }
+                else {
+                    console.log(response);
+                    this.setState({ loader: false })
+                    Alert.alert('', response.data.msg)
+                }
+                //handle success
+            })
+            .catch(function (error) {
+                // handle error
+                Alert.alert('', 'Network error')
+    
+            })
+            .then(function () {
+                // always executed
+            });
+    }
+  
     //   }
 
     render() {
@@ -58,13 +113,32 @@ class BloodBank extends Component {
                 </View>
                 <View style={{ flex: 1 }}>
                     <View style={{ height: 120, marginTop: 15, flexDirection: 'row', paddingHorizontal: 10, marginLeft: 10, }}>
-                        <TouchableOpacity style={{ backgroundColor: '#ffffff', flex: 1, elevation: 3, shadowOpacity: 0.5, borderRadius: 10, marginRight: 10, alignItems: 'center', justifyContent: 'center', padding: 10 }}>
+                        <TouchableOpacity
+                            onPress={() => {
+                                Alert.alert(
+                                    "Are you sure",
+                                    "",
+                                    [
+                                        {
+                                            text: "Cancel",
+                                            onPress: () => console.log("Cancel Pressed"),
+                                            style: "cancel"
+                                        },
+                                        {
+                                            text: "OK", onPress: () => {
+                                                this.becomeDonorApi()
+                                            }
+                                        }
+                                    ]
+                                );
+                            }}
+                            style={{ backgroundColor: '#ffffff', flex: 1, elevation: 3, shadowOpacity: 0.5, borderRadius: 10, marginRight: 10, alignItems: 'center', justifyContent: 'center', padding: 10 }}>
                             <Image style={{ height: 60, width: 90 }}
                                 source={require('../../../../images/become_donor.png')}
                             />
                             <Text styFle={{ marginBottom: -15, marginTop: 5, fontSize: 20, fontWeight: 'bold' }}>Become a Donor</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity onPress={()=>{this.props.navigation.navigate('FindDonor')}} style={{ backgroundColor: '#ffffff', flex: 1, elevation: 3, shadowOpacity: 0.5, borderRadius: 10, marginLeft: 20, marginRight: 10, alignItems: 'center', justifyContent: 'center', padding: 10 }}>
+                        <TouchableOpacity onPress={() => { this.props.navigation.navigate('FindDonor') }} style={{ backgroundColor: '#ffffff', flex: 1, elevation: 3, shadowOpacity: 0.5, borderRadius: 10, marginLeft: 20, marginRight: 10, alignItems: 'center', justifyContent: 'center', padding: 10 }}>
                             <Image style={{ height: 60, width: 70 }}
                                 source={require('../../../../images/find-donor.png')}
                             />

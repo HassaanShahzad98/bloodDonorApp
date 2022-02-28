@@ -22,6 +22,7 @@ import HelpLine from '../Screens/App/HelpLine';
 import FreeFood from '../Screens/App/FreeFood';
 import MyAccount from '../Screens/App/MyAccount';
 import Emergencies from '../Screens/App/Emergencies';
+import Donors from '../Screens/App/Donors';
 
 
 
@@ -111,6 +112,7 @@ const AppStack = createStackNavigator(
     FreeFood: { screen: FreeFood },
     MyAccount: {screen : MyAccount},
     Emergencies: {screen : Emergencies},
+    Donors: {screen : Donors},
 
 
 
